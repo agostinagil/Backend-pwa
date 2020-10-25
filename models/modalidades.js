@@ -1,6 +1,6 @@
 const bd = require("./../utils/bd");
 const t = require("./../utils/schemas");
-const dbService = require("../utils/dbService");
+const bdService = require("../utils/dbService");
 
 const getSingle = (id) =>
   bd(`${t.MODALIDADES} `).where({ id }).select("nombre", "descripcion");

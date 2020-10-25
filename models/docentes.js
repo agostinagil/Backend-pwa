@@ -8,7 +8,7 @@ const getAll = () =>
 const getSingle = (id) =>
   bd(`${t.DOCENTES}`).where({ id }).select("nombre", "apellido", "CUIT");
 
-const create = (obj) => bdService.create(`${t.DOCENTES}`, obj);
+const create = (obj) => dbService.create(`${t.DOCENTES}`, obj);
 
 const modify = (id, obj) => bdService.modify(`${t.DOCENTES}`, { id }, obj);
 module.exports = { getAll, getSingle, create, modify };

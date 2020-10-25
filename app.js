@@ -16,6 +16,9 @@ const auth = require("./routes/auth");
 const perfil = require("./routes/perfil");
 const modalidades = require("./routes/modalidades");
 const docentes = require("./routes/docentes");
+const registro = require("./routes/registro");
+const users = require("./routes/users");
+const doc = require("./routes/doc")
 
 var app = express();
 
@@ -38,6 +41,9 @@ app.use("/auth", auth);
 app.use("/perfil", secured, perfil);
 app.use("/modalidades", modalidades);
 app.use("/docentes", docentes);
+app.use("/registro", registro);
+app.use("/users", users);
+app.use("/doc", doc)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

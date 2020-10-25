@@ -6,7 +6,7 @@ const secured = (req, res, next) => {
   try {
     const { authorization } = req.headers;
     const { id } = jwt.verify(authorization, publicKey);
-    req.id = id;
+    req.id =id;
     next();
   } catch (error) {
     console.log(error);

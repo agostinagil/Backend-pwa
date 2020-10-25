@@ -9,8 +9,6 @@ const getSingle = (id) =>
     .where({ id, habilitado: true })
     .select("id", "nombre", "apellido", "mail", "telefono");
 
-const create = (obj) => bdService.create(`${t.PERSONAS}`, obj);
-
 const modify = (id, obj) => bdService.modify(`${t.PERSONAS}`, { id }, obj);
 
-module.exports = { getAll, getSingle, create, modify };
+module.exports = { getAll, getSingle, modify };
