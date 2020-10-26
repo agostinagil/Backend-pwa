@@ -1,15 +1,37 @@
-const model = require("./../models/doc");
-const {imgFile} = require("./../utils/fileHandler");
+const { create, createImgs } = require("./../models/docentes");
+const { imgFile } = require("./../utils/fileHandler");
 
-const createDocente = async (bodyObj, fileObj) => {
-    try {
-        const [ idDocente ] = await model.create( bodyObj );
-        const uidImage = imgFile(fileObj);
-        console.log( "Uid de imagen: ", uidImage)
-    } catch (error) {
-        
-    }
+/*  PARA CUANDO TENEMOS QUE SUBIR MÁS DE UN ARCHIVO USAMOS MAP
+const createDocente = async (body, files) => {
+  try {
+    const [idDocente] = await create(body);
+    const results = files.map((file) => {
+      const uid = imgFile(files);
+      const obj = {
+        idDocente,
+        uid,
+      };
+      createImgs(obj);
+    });
+    await Promise.all(results);
+  } catch (error) {}
+};
+*/
 
-}
+const createDocente = async (body, files) => {
+  try {
+    const [idDocente] = await create(body);
+    const result = files.map((file) => {});
+    const uid = imgFile(files);
+    const obj = {
+      idDocente,
+      uid,
+    };
+    const [idImagen] = await createImgs(obj);
+    return idImagen;
+  } catch (error) {
+    throw e;
+  }
+};
 
-module.exports = {createDocente}
+module.exports = { createDocente };
